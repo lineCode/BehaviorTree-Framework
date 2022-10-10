@@ -6,7 +6,7 @@
 namespace BT {
 namespace Composite {
 
-class Parallel : public IComposite {
+class CParallel : public IComposite {
 public:
   enum struct Policy { RequireOne, RequireAll };
 
@@ -14,12 +14,12 @@ protected:
   Policy m_eSuccessPolicy, m_eFailurePolicy;
 
 public:
-  Parallel(IAgent *agent, Policy successPolicy = Policy::RequireAll,
+  CParallel(IAgent *agent, Policy successPolicy = Policy::RequireAll,
            Policy failurePolicy = Policy::RequireOne)
       : IComposite(agent), m_eSuccessPolicy(successPolicy),
         m_eFailurePolicy(failurePolicy) {}
 
-  virtual ~Parallel() = default;
+  virtual ~CParallel() = default;
 
   EStatus Execute() override {
     int iSuccessCount = 0, iFailureCount = 0;

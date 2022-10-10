@@ -1,7 +1,8 @@
 #ifndef IDECORATOR_HPP
 #define IDECORATOR_HPP
 
-#include "../IBehavior.hpp"
+#include "../Node/IBehavior.hpp"
+using namespace BT::Node;
 
 namespace BT {
 namespace Decorator {

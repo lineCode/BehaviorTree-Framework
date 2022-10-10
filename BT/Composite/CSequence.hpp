@@ -1,20 +1,21 @@
-#ifndef SELECTOR_HPP
-#define SELECTOR_HPP
+#ifndef SEQUENCE_HPP
+#define SEQUENCE_HPP
 
 #include "./IComposite.hpp"
+#include <list>
 
 namespace BT {
 namespace Composite {
 
-class Selector : public IComposite {
+class CSequence : public IComposite {
 protected:
   EStatus Execute() override {
     while (m_itCurrent != m_lChildren.end()) {
       EStatus status = (*m_itCurrent)->Tick();
       switch (status) {
-      case EStatus::Failure:
+      case EStatus::Success:
         if (++m_itCurrent == m_lChildren.end()) {
-          return EStatus::Failure;
+          return EStatus::Success;
         }
         break;
       default:
@@ -25,12 +26,12 @@ protected:
   }
 
 public:
-  Selector(IAgent *agent) : IComposite(agent) {}
+  CSequence(IAgent *agent) : IComposite(agent) {}
 
-  virtual ~Selector() = default;
+  virtual ~CSequence() = default;
 };
 
 } // namespace Composite
 } // namespace BT
 
-#endif // SELECTOR_HPP
+#endif // SEQUENCE_HPP

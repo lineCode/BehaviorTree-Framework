@@ -1,11 +1,11 @@
-#ifndef IBehavior_HPP
-#define IBehavior_HPP
+#ifndef IBEHAVIOR_HPP
+#define IBEHAVIOR_HPP
 
-#include "../Agent/IAgent.hpp"
+#include "../../Agent/IAgent.hpp"
 #include <stdexcept>
 
 namespace BT {
-
+namespace Node {
 enum struct EStatus { Invalid, Running, Success, Failure, Suspended, Aborted };
 
 class IBehavior {
@@ -49,6 +49,7 @@ public:
   }
 };
 
+} // namespace Node
 } // namespace BT
 
-#endif // IBehavior_HPP
+#endif // IBEHAVIOR_HPP

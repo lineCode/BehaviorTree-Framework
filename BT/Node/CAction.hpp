@@ -5,7 +5,9 @@
 #include <functional>
 
 namespace BT {
-class Action : public IBehavior {
+namespace Node {
+  
+class CAction : public IBehavior {
 protected:
   void Enter() override {}
 
@@ -19,10 +21,12 @@ public:
   typedef std::function<EStatus(IAgent *agent)> Task;
   Task m_pTask = nullptr;
 
-  Action(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
+  CAction(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
 
-  ~Action() = default;
+  ~CAction() = default;
 };
+
+} // namespace Node
 } // namespace BT
 
 #endif // ACTION_HPP

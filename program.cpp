@@ -1,48 +1,48 @@
 #include "./Agent/Bob.hpp"
-#include "./BT/Nodes.hpp"
+#include "./BT/CBehaviorTree.hpp"
 #include <iostream>
 
 int main(int argc, char const *argv[]) {
   IAgent *bob = new Bob();
-  BT::Composite::Sequence seq(bob);
-  seq.AddChild(new BT::Condition(bob, [](IAgent *agent) {
+  Composite::CSequence sequence(bob);
+  sequence.AddChild(new Node::CCondition(bob, [](IAgent *agent) {
     std::cout << "Sequence 1st condition\n";
     return true;
   }));
-  seq.AddChild(new BT::Action(bob, [](IAgent *agent) {
+  sequence.AddChild(new Node::CAction(bob, [](IAgent *agent) {
     std::cout << "Sequence 2nd action\n";
-    return BT::EStatus::Failure;
+    return Node::EStatus::Failure;
   }));
-  seq.AddChild(new BT::Action(bob, [](IAgent *agent) {
+  sequence.AddChild(new Node::CAction(bob, [](IAgent *agent) {
     std::cout << "Sequence 3rd action\n";
-    return BT::EStatus::Success;
+    return Node::EStatus::Success;
   }));
   for (int i = 0; i < 3; i++) {
-    seq.Tick();
+    sequence.Tick();
   }
-  BT::Composite::Selector sel(bob);
-  sel.AddChild(new BT::Action(bob, [](IAgent *agent) {
+  Composite::CSelector selector(bob);
+  selector.AddChild(new Node::CAction(bob, [](IAgent *agent) {
     std::cout << "Selector 1st action\n";
-    return BT::EStatus::Success;
+    return Node::EStatus::Success;
   }));
-  sel.AddChild(new BT::Action(bob, [](IAgent *agent) {
+  selector.AddChild(new Node::CAction(bob, [](IAgent *agent) {
     std::cout << "Selector 2nd action\n";
-    return BT::EStatus::Failure;
+    return Node::EStatus::Failure;
   }));
   for (int i = 0; i < 3; i++) {
-    sel.Tick();
+    selector.Tick();
   }
-  BT::Composite::Parallel par(bob);
-  par.AddChild(new BT::Action(bob, [](IAgent *agent) {
+  Composite::CParallel parallel(bob);
+  parallel.AddChild(new Node::CAction(bob, [](IAgent *agent) {
     agent->Eat("Apple");
-    return BT::EStatus::Running;
+    return Node::EStatus::Running;
   }));
-  par.AddChild(new BT::Action(bob, [](IAgent *agent) {
+  parallel.AddChild(new Node::CAction(bob, [](IAgent *agent) {
     agent->Speak("Hello!");
-    return BT::EStatus::Running;
+    return Node::EStatus::Running;
   }));
   for (int i = 0; i < 3; i++) {
-    par.Tick();
+    parallel.Tick();
   }
   return 0;
 }

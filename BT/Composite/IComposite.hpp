@@ -1,8 +1,9 @@
 #ifndef ICOMPOSITE_HPP
 #define ICOMPOSITE_HPP
 
-#include "../IBehavior.hpp"
+#include "../Node/IBehavior.hpp"
 #include <list>
+using namespace BT::Node;
 
 namespace BT {
 namespace Composite {

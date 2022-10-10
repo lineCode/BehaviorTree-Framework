@@ -1,23 +1,23 @@
 #ifndef ACTIVESELECTOR_HPP
 #define ACTIVESELECTOR_HPP
 
-#include "./Selector.hpp"
+#include "./CSelector.hpp"
 
 namespace BT {
 namespace Composite {
 
-class ActiveSelector : public Selector {
+class CActiveSelector : public CSelector {
 public:
-  ActiveSelector(IAgent *agent) : Selector(agent){};
+  CActiveSelector(IAgent *agent) : CSelector(agent){};
 
-  ~ActiveSelector() = default;
+  ~CActiveSelector() = default;
 
   void Enter() override { m_itCurrent = m_lChildren.end(); }
 
   EStatus Execute() override {
     std::list<IBehavior *>::iterator prev = m_itCurrent;
-    Selector::Enter();
-    EStatus result = Selector::Execute();
+    CSelector::Enter();
+    EStatus result = CSelector::Execute();
     if (prev != m_lChildren.end() && m_itCurrent != prev)
       (*prev)->Abort();
     return result;

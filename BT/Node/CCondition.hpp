@@ -17,7 +17,7 @@ protected:
     return EStatus::Failure;
   }
 
-  void Exit() override {}
+  void Exit(EStatus status) override {}
 
 public:
   typedef std::function<bool(IAgent *agent)> Task;

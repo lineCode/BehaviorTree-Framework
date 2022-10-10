@@ -15,7 +15,7 @@ protected:
     return m_pTask ? m_pTask(m_pAgent) : EStatus::Failure;
   }
 
-  void Exit() override {}
+  void Exit(EStatus status) override {}
 
 public:
   typedef std::function<EStatus(IAgent *agent)> Task;

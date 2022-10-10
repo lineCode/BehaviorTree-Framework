@@ -6,6 +6,7 @@
 
 namespace BT {
 namespace Node {
+
 enum struct EStatus { Invalid, Running, Success, Failure, Suspended, Aborted };
 
 class IBehavior {
@@ -15,7 +16,7 @@ protected:
 
   virtual void Enter() = 0;
   virtual EStatus Execute() = 0;
-  virtual void Exit() {}
+  virtual void Exit(EStatus status) {}
 
 public:
   IBehavior(IAgent *agent) : m_pAgent(agent) {}
@@ -26,10 +27,7 @@ public:
 
   void Suspend() { m_eStatus = EStatus::Suspended; }
 
-  void Abort() {
-    m_eStatus = EStatus::Aborted;
-    Exit();
-  }
+  void Abort() { Exit(EStatus::Aborted); }
 
   bool IsTerminated() const {
     return m_eStatus == EStatus::Success || m_eStatus == EStatus::Failure;
@@ -44,7 +42,7 @@ public:
       Enter();
     m_eStatus = Execute();
     if (m_eStatus != EStatus::Running)
-      Exit();
+      Exit(m_eStatus);
     return m_eStatus;
   }
 };

@@ -56,7 +56,7 @@ public:
     return EStatus::Running;
   }
 
-  void Exit() override {
+  void Exit(EStatus status) override {
     for (auto iter = m_lChildren.begin(); iter != m_lChildren.end(); ++iter) {
       IBehavior *node = *iter;
       if (node->IsRunning())

@@ -1,23 +1,25 @@
 #if !defined(BEHAVIORTREE_HPP)
 #define BEHAVIORTREE_HPP
 
-#include "./Node/CAction.hpp"
 #include "./Composite/CActiveSelector.hpp"
 #include "./Composite/CFilter.hpp"
 #include "./Composite/CMonitor.hpp"
 #include "./Composite/CParallel.hpp"
 #include "./Composite/CSelector.hpp"
 #include "./Composite/CSequence.hpp"
-#include "./Node/CCondition.hpp"
 #include "./Decorator/CRepeat.hpp"
+#include "./Node/CAction.hpp"
+#include "./Node/CCondition.hpp"
+#include <list>
+
 using namespace BT;
 
-class CBehaviorTree
-{
-private:
-  /* data */
+class CBehaviorTree {
+  std::list<IBehavior *> m_lBehaviors;
+
 public:
-  CBehaviorTree(/* args */) = default;
+  CBehaviorTree() = default;
+  
   ~CBehaviorTree() = default;
 };
 

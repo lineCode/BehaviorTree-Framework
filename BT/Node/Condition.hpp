@@ -7,7 +7,7 @@
 namespace BT {
 namespace Node {
 
-class CCondition : public IBehavior {
+class Condition : public IBehavior {
 protected:
   void Enter() override {}
 
@@ -23,9 +23,9 @@ public:
   typedef std::function<bool(IAgent *agent)> Task;
   Task m_pTask = nullptr;
 
-  CCondition(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
+  Condition(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
 
-  ~CCondition() = default;
+  ~Condition() = default;
 };
 
 } // namespace Node

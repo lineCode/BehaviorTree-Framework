@@ -6,7 +6,7 @@
 namespace BT {
 namespace Decorator {
 
-class CRepeat : public IDecorator {
+class Repeat : public IDecorator {
   int m_iLimit = 0, m_iCount = 0;
 
   void Enter() override { m_iCount = 0; }
@@ -34,10 +34,10 @@ class CRepeat : public IDecorator {
   }
 
 public:
-  CRepeat(IAgent *agent, IBehavior *child, int count)
+  Repeat(IAgent *agent, IBehavior *child, int count)
       : IDecorator(agent, child), m_iCount(count) {}
 
-  ~CRepeat() = default;
+  ~Repeat() = default;
 
   void SetCount(int count) { m_iCount = count; }
 };

@@ -1,16 +1,16 @@
 #ifndef FILTER_HPP
 #define FILTER_HPP
 
-#include "./CSequence.hpp"
+#include "./Sequence.hpp"
 
 namespace BT {
 namespace Composite {
 
-class CFilter : public CSequence {
+class Filter : public Sequence {
 public:
-  CFilter(IAgent *agent) : CSequence(agent) {}
+  Filter(IAgent *agent) : Sequence(agent) {}
 
-  ~CFilter() = default;
+  ~Filter() = default;
 
   void AddCondition(IBehavior *condition) { m_lChildren.push_front(condition); }
 

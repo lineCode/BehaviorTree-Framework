@@ -1,17 +1,17 @@
 #ifndef MONITOR_HPP
 #define MONITOR_HPP
 
-#include "./CParallel.hpp"
+#include "./Parallel.hpp"
 
 namespace BT {
 namespace Composite {
 
-class CMonitor : public CParallel {
+class Monitor : public Parallel {
 public:
-  CMonitor(IAgent *agent)
-      : CParallel(agent, Policy::RequireOne, Policy::RequireOne) {}
+  Monitor(IAgent *agent)
+      : Parallel(agent, Policy::RequireOne, Policy::RequireOne) {}
 
-  ~CMonitor() = default;
+  ~Monitor() = default;
 
   void AddCondition(IBehavior *condition) { m_lChildren.push_front(condition); }
 

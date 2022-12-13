@@ -7,7 +7,7 @@
 namespace BT {
 namespace Node {
   
-class CAction : public IBehavior {
+class Action : public IBehavior {
 protected:
   void Enter() override {}
 
@@ -21,9 +21,9 @@ public:
   typedef std::function<EStatus(IAgent *agent)> Task;
   Task m_pTask = nullptr;
 
-  CAction(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
+  Action(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
 
-  ~CAction() = default;
+  ~Action() = default;
 };
 
 } // namespace Node

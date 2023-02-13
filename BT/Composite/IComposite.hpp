@@ -8,19 +8,19 @@ using namespace BT::Node;
 namespace BT {
 namespace Composite {
 
-class IComposite : public IBehavior {
+class IComposite : public INode {
 protected:
-  std::list<IBehavior *> m_lChildren;
-  std::list<IBehavior *>::iterator m_itCurrent;
+  std::list<INode *> m_lChildren;
+  std::list<INode *>::iterator m_itCurrent;
 
 public:
-  IComposite(IAgent *agent) : IBehavior(agent){};
+  IComposite(IAgent *agent) : INode(agent){};
 
   virtual ~IComposite() = default;
 
-  void AddChild(IBehavior *child) { m_lChildren.push_back(child); }
+  void AddChild(INode *child) { m_lChildren.push_back(child); }
 
-  void RemoveChild(IBehavior *node) { m_lChildren.remove(node); }
+  void RemoveChild(INode *node) { m_lChildren.remove(node); }
 
   void Clear() { m_lChildren.clear(); }
 

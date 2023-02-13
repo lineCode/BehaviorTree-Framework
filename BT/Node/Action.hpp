@@ -7,7 +7,7 @@
 namespace BT {
 namespace Node {
   
-class Action : public IBehavior {
+class Action : public INode {
 protected:
   void Enter() override {}
 
@@ -21,7 +21,7 @@ public:
   typedef std::function<EStatus(IAgent *agent)> Task;
   Task m_pTask = nullptr;
 
-  Action(IAgent *agent, Task task) : IBehavior(agent), m_pTask(task) {}
+  Action(IAgent *agent, Task task) : INode(agent), m_pTask(task) {}
 
   ~Action() = default;
 };

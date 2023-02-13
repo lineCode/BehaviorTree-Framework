@@ -7,13 +7,13 @@ using namespace BT::Node;
 namespace BT {
 namespace Decorator {
 
-class IDecorator : public IBehavior {
+class IDecorator : public INode {
 protected:
-  IBehavior *m_pChild = nullptr;
+  INode *m_pChild = nullptr;
 
 public:
-  IDecorator(IAgent *agent, IBehavior *child)
-      : IBehavior(agent), m_pChild(child){};
+  IDecorator(IAgent *agent, INode *child)
+      : INode(agent), m_pChild(child){};
 
   virtual ~IDecorator() = default;
 };

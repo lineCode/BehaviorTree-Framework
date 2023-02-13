@@ -12,9 +12,9 @@ public:
 
   ~Filter() = default;
 
-  void AddCondition(IBehavior *condition) { m_lChildren.push_front(condition); }
+  void AddCondition(INode *condition) { m_lChildren.push_front(condition); }
 
-  void AddAction(IBehavior *action) { m_lChildren.push_back(action); }
+  void AddAction(INode *action) { m_lChildren.push_back(action); }
 };
 
 } // namespace Composite

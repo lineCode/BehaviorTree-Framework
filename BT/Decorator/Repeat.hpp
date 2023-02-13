@@ -34,7 +34,7 @@ class Repeat : public IDecorator {
   }
 
 public:
-  Repeat(IAgent *agent, IBehavior *child, int count)
+  Repeat(IAgent *agent, INode *child, int count)
       : IDecorator(agent, child), m_iCount(count) {}
 
   ~Repeat() = default;

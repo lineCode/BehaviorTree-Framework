@@ -25,7 +25,7 @@ public:
     int iSuccessCount = 0, iFailureCount = 0;
     auto iter = m_lChildren.begin();
     while (iter != m_lChildren.end()) {
-      IBehavior *node = *iter++;
+      INode *node = *iter++;
       if (!node->IsTerminated()) {
         switch (node->Tick()) {
         case EStatus::Success:
@@ -57,8 +57,9 @@ public:
   }
 
   void Exit(EStatus status) override {
-    for (auto iter = m_lChildren.begin(); iter != m_lChildren.end(); ++iter) {
-      IBehavior *node = *iter;
+    for (auto iter = m_lChildren.begin(); 
+      iter != m_lChildren.end(); ++iter) {
+      INode *node = *iter;
       if (node->IsRunning())
         node->Abort();
     }

@@ -15,7 +15,7 @@ public:
   void Enter() override { m_itCurrent = m_lChildren.end(); }
 
   EStatus Execute() override {
-    std::list<IBehavior *>::iterator prev = m_itCurrent;
+    std::list<INode *>::iterator prev = m_itCurrent;
     Selector::Enter();
     EStatus result = Selector::Execute();
     if (prev != m_lChildren.end() && m_itCurrent != prev)

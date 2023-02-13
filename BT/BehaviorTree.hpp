@@ -15,7 +15,7 @@
 using namespace BT;
 
 class BehaviorTree {
-  std::list<IBehavior *> m_lBehaviors;
+  std::list<INode *> m_lBehaviors;
 
 public:
   BehaviorTree() = default;
